@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -365,7 +365,7 @@
             destinationData = data.internacional[selectedDestination][selectedCity];
         }
 
-        let totalFlightCost = destinationData.flight * numPeople;
+        let totalFlightCost = destinationData.flight*2 * numPeople;
         let totalHotelCost = destinationData.hotelPerNight * numDays * numPeople;
         let totalTourCost = destinationData.tourPerDay * numDays * numPeople;
         let totalCost = totalFlightCost + totalHotelCost + totalTourCost;
@@ -375,6 +375,9 @@
 
         // Ajustar por interés que se abona al usuario
         adjustedSavings = monthlySavings * (1 - interestRate);
+
+        // Calcular el monto total ahorrado con el interés
+        let totalSavingsWithInterest = totalCost * (1 + interestRate);
 
         // Generar fechas de pago
         paymentDates = [];
@@ -392,6 +395,7 @@
             <strong>Total a Ahorrar:</strong> $${totalCost.toFixed(2)}<br>
             <strong>Meses Restantes:</strong> ${monthsLeft}<br>
             <strong>Ahorro Mensual Requerido:</strong> $${adjustedSavings.toFixed(2)}<br>
+            <strong>Total Ahorrado con Interés:</strong> $${totalSavingsWithInterest.toFixed(2)}<br>
             <em>(Considerando un interés del ${interestRate * 100}% que se abona a su cuenta)</em>
         `;
         document.getElementById('resultText').innerHTML = resultText;
